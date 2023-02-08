@@ -16,7 +16,7 @@ public class Student {
     private double balance = 0; 
     private int studentYear = 0;
 
-
+    MongoDB database = new MongoDB();
 
     public Student(String fNameIn, String lNameIn, int yearIn){
         fName = fNameIn;
@@ -43,7 +43,7 @@ public class Student {
 
         globalID++; 
 
-        MongoDB database = new MongoDB();
+       
 
         database.addStudent(this.fName, this.lName, this.id);
 
@@ -52,16 +52,13 @@ public class Student {
     }
 
 
-
-
-
     public void addCourse(int courseNumber){
         switch(courseNumber){
-            case 0: classList.add("History 101"); balance += 600; break;
-            case 1: classList.add("Math 101");  balance += 600;  break;
-            case 2: classList.add("English 101"); balance += 600;  break;
-            case 3: classList.add("Chemistry 101"); balance += 600;  break;
-            case 4: classList.add("Computer Science 101"); balance += 600;  break;
+            case 0: classList.add("History 101"); balance += 600; database.updateBalance(600.00, id);     break;
+            case 1: classList.add("Math 101");  balance += 600; database.updateBalance(600.00, id); break;
+            case 2: classList.add("English 101"); balance += 600; database.updateBalance(600.00, id); break;
+            case 3: classList.add("Chemistry 101"); balance += 600; database.updateBalance(600.00, id); break;
+            case 4: classList.add("Computer Science 101"); balance += 600;  database.updateBalance(600.00, id); break;
 
             default: System.out.println("A class was not selected/Added"); break; 
         }
@@ -74,6 +71,7 @@ public class Student {
     
     public void payTuition(double payment){
         this.balance -= payment; 
+        database.updateBalance(this.balance, id);
 
     }
 
@@ -84,9 +82,7 @@ public class Student {
                 "Student ID: " + id + "\n" +
                 "Balance: " + balance + "\n" + 
                 "Classes: " +  classList ) ;
-            
-            
-            
+
             }
 
 }

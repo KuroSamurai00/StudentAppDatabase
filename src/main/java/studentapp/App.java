@@ -20,18 +20,7 @@ public class App
 
         System.out.println("Welcome To student application!");
 
-        studentTest.viewStatus();
-        studentTest.addCourse(4);
-        studentTest.getBalance();
-        studentTest.payTuition(200);
-        studentTest.getBalance();
-        studentTest.addCourse(1);
-        studentTest.addCourse(2);
         
-        studentTest.payTuition(700);
-
-        studentTest.viewStatus();
-
         System.out.println("How many Students are being added?: ");
         int numOfStudents = in.nextInt();
 
@@ -41,7 +30,10 @@ public class App
         }
 
         studentsList.get(0).viewStatus();
-        studentsList.get(1).viewStatus();
+        studentsList.get(0).addCourse(4);
+
+        studentsList.get(0).viewStatus();
+
 
         
 
